@@ -43,15 +43,15 @@ const ValentineCard = ({
     setAnswered(true);
   };
   const handleNoClick = () => {
-    // Playfully change the "no" button to "YES ❤️" first
-    setNoButtonText("YES ❤️");
+    // Playfully change the "no" button to "Yes 😈😈" immediately
+    setNoButtonText("Yes 😈😈");
     setIsTransitioning(true);
 
-    // Wait a moment to show the button change, then trigger the result
+    // Wait 1.2 seconds to let the user see the playful change, then trigger the result
     setTimeout(() => {
       fireConfetti();
       setAnswered(true);
-    }, 600);
+    }, 1200);
   };
   if (answered) {
     return <div className="flex flex-col items-center justify-center text-center px-6 animate-fade-in-up">
