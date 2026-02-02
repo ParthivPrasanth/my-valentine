@@ -57,7 +57,7 @@ const ValentineCard = ({
     return <div className="flex flex-col items-center justify-center text-center px-6 animate-fade-in-up">
         <div className="text-6xl mb-6 animate-pulse-glow">💕</div>
         <h1 className="font-romantic text-3xl md:text-4xl text-foreground leading-relaxed mb-4">
-          Good. I already knew the answer 💕
+          Good. I already knew your answer 💕
         </h1>
         
       </div>;
