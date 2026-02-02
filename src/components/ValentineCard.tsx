@@ -70,7 +70,7 @@ const ValentineCard = ({
       {/* Paragraph */}
       <p className="font-body text-base md:text-lg text-muted-foreground mb-8 leading-relaxed animate-fade-in-up" style={{
       animationDelay: "0.3s"
-    }}>I know you have been asking me this for a long time. I am sorry for not doing this sooner and I wanted to do something special instead of just simply asking 
+    }}>I know you have been asking me this for a long time. I am sorry for not doing this sooner as I wanted to do something special instead of just simply asking 
       <br />
         Being with you feels easy, warm, and real.
       </p>
