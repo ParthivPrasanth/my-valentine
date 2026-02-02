@@ -9,6 +9,7 @@ const ValentineCard = ({
   const [answered, setAnswered] = useState(false);
   const [noButtonText, setNoButtonText] = useState("no 💔");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isShaking, setIsShaking] = useState(false);
   const fireConfetti = () => {
     const heart = confetti.shapeFromPath({
       path: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -43,15 +44,21 @@ const ValentineCard = ({
     setAnswered(true);
   };
   const handleNoClick = () => {
-    // Playfully change the "no" button to "Yes 😈😈" immediately
-    setNoButtonText("Yes 😈😈");
-    setIsTransitioning(true);
-
-    // Wait 1.2 seconds to let the user see the playful change, then trigger the result
+    // Start shake animation
+    setIsShaking(true);
+    
+    // After shake completes, change text
     setTimeout(() => {
-      fireConfetti();
-      setAnswered(true);
-    }, 1200);
+      setIsShaking(false);
+      setNoButtonText("Yes 😈😈");
+      setIsTransitioning(true);
+      
+      // Wait 1.2 seconds to let the user see the playful change, then trigger the result
+      setTimeout(() => {
+        fireConfetti();
+        setAnswered(true);
+      }, 1200);
+    }, 400);
   };
   if (answered) {
     return <div className="flex flex-col items-center justify-center text-center px-6 animate-fade-in-up">
@@ -97,7 +104,7 @@ const ValentineCard = ({
         <button onClick={handleYesClick} className="px-8 py-4 text-lg font-body font-semibold rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95">
           YES ❤️
         </button>
-        <button onClick={handleNoClick} disabled={isTransitioning} className={`px-8 py-4 text-lg font-body font-medium rounded-full transition-all duration-300 hover:scale-105 active:scale-95 ${isTransitioning ? "bg-primary text-primary-foreground shadow-lg animate-pulse" : "bg-secondary text-secondary-foreground border border-border hover:bg-muted"}`}>
+        <button onClick={handleNoClick} disabled={isTransitioning || isShaking} className={`px-8 py-4 text-lg font-body font-medium rounded-full transition-all duration-300 hover:scale-105 active:scale-95 ${isShaking ? "animate-shake" : ""} ${isTransitioning ? "bg-primary text-primary-foreground shadow-lg animate-pulse" : "bg-secondary text-secondary-foreground border border-border hover:bg-muted"}`}>
           {noButtonText}
         </button>
       </div>
