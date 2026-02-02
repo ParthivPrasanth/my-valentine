@@ -1,9 +1,8 @@
 import FloatingHearts from "@/components/FloatingHearts";
 import ValentineCard from "@/components/ValentineCard";
+import couplePhoto from "@/assets/couple-photo.png";
 
 const Index = () => {
-  // Replace this with your uploaded photo URL
-  const couplePhoto = undefined;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
