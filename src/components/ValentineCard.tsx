@@ -86,7 +86,7 @@ const ValentineCard = ({
         ​ 
       </p>
 
-      <h1 className="font-romantic text-3xl md:text-4xl text-foreground mb-8 animate-fade-in-up" style={{
+      <h1 className="font-romantic md:text-4xl text-foreground mb-8 animate-fade-in-up text-5xl" style={{
       animationDelay: "0.4s"
     }}>
         Will you be my Valentine?
