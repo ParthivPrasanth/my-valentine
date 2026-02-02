@@ -7,22 +7,36 @@ interface Heart {
   duration: number;
   delay: number;
   opacity: number;
+  type: "heart" | "sparkle" | "double";
 }
 
 const FloatingHearts = () => {
   const [hearts, setHearts] = useState<Heart[]>([]);
 
   useEffect(() => {
-    const initialHearts: Heart[] = Array.from({ length: 12 }, (_, i) => ({
+    const types: Heart["type"][] = ["heart", "sparkle", "double"];
+    const initialHearts: Heart[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      size: Math.random() * 16 + 12,
-      duration: Math.random() * 8 + 10,
-      delay: Math.random() * 8,
-      opacity: Math.random() * 0.3 + 0.15,
+      size: Math.random() * 18 + 14,
+      duration: Math.random() * 10 + 12,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.4 + 0.2,
+      type: types[Math.floor(Math.random() * types.length)],
     }));
     setHearts(initialHearts);
   }, []);
+
+  const getHeartEmoji = (type: Heart["type"]) => {
+    switch (type) {
+      case "sparkle":
+        return "💖";
+      case "double":
+        return "💕";
+      default:
+        return "♥";
+    }
+  };
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -38,7 +52,9 @@ const FloatingHearts = () => {
             opacity: heart.opacity,
           }}
         >
-          <span className="text-primary">♥</span>
+          <span className={heart.type === "heart" ? "text-primary" : ""}>
+            {getHeartEmoji(heart.type)}
+          </span>
         </div>
       ))}
     </div>
