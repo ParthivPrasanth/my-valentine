@@ -66,7 +66,7 @@ const ValentineCard = ({
       <p className="font-romantic text-xl md:text-2xl text-foreground mb-6 animate-fade-in-up" style={{
       animationDelay: "0.1s"
     }}>
-        For the girl who became my favorite person ❤️
+        For the girl who became my favorite person, my ponnu 💚💚💚 
       </p>
 
       <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg mb-6 bg-secondary flex items-center justify-center animate-fade-in-up border-4 border-rose-light" style={{
