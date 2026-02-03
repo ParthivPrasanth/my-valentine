@@ -71,45 +71,73 @@ const ValentineCard = ({
         </p>
       </div>;
   }
-  return <div className="flex flex-col items-center justify-center text-center px-6 max-w-md mx-auto">
-      <p className="font-romantic text-xl md:text-2xl text-foreground mb-6 animate-fade-in-up" style={{
-      animationDelay: "0.1s"
-    }}>
+  return (
+    <div className="flex flex-col items-center justify-center text-center px-6 max-w-md mx-auto">
+      {/* Step 1: Opening text - appears first */}
+      <p 
+        className="font-romantic text-xl md:text-2xl text-foreground mb-6 opacity-0 animate-story-fade-in" 
+        style={{ animationDelay: "0.3s" }}
+      >
         For the girl who became my favorite person, my ponnu 💚💚💚 
       </p>
 
-      <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg mb-6 bg-secondary flex items-center justify-center animate-fade-in-up border-4 border-rose-light" style={{
-      animationDelay: "0.2s"
-    }}>
-        {imageUrl ? <img src={imageUrl} alt="Us" className="w-full h-full object-cover" /> : <div className="text-muted-foreground text-sm font-body p-4">
+      {/* Step 2: Photo - polaroid style with soft shadow */}
+      <div 
+        className="w-48 h-48 md:w-56 md:h-56 rounded-xl overflow-hidden mb-6 bg-card flex items-center justify-center opacity-0 animate-story-fade-in polaroid-frame" 
+        style={{ animationDelay: "1.2s" }}
+      >
+        {imageUrl ? (
+          <img src={imageUrl} alt="Us" className="w-full h-full object-cover" />
+        ) : (
+          <div className="text-muted-foreground text-sm font-body p-4">
             <span className="text-4xl block mb-2">📷</span>
             Upload your photo
-          </div>}
+          </div>
+        )}
       </div>
 
-      <p className="font-body text-base md:text-lg text-muted-foreground mb-8 leading-relaxed animate-fade-in-up" style={{
-      animationDelay: "0.3s"
-    }}>I know you have been asking me this for a long time. I am sorry for not doing this sooner as I wanted to go out of my way and do something special for you
-​<br />
-        ​ 
+      {/* Step 3: Story text */}
+      <p 
+        className="font-body text-base md:text-lg text-muted-foreground mb-8 leading-relaxed opacity-0 animate-story-fade-in" 
+        style={{ animationDelay: "2.1s" }}
+      >
+        I know you have been asking me this for a long time. I am sorry for not doing this sooner as I wanted to go out of my way and do something special for you
       </p>
 
-      <h1 className="font-romantic md:text-4xl text-foreground mb-8 animate-fade-in-up text-5xl" style={{
-      animationDelay: "0.4s"
-    }}>
+      {/* Step 4: The question */}
+      <h1 
+        className="font-romantic text-4xl md:text-5xl text-foreground mb-8 opacity-0 animate-story-fade-in" 
+        style={{ animationDelay: "3s" }}
+      >
         Will you be my Valentine?
       </h1>
 
-      <div className="flex gap-4 animate-fade-in-up" style={{
-      animationDelay: "0.5s"
-    }}>
-        <button onClick={handleYesClick} className="px-8 py-4 text-lg font-body font-semibold rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95">
+      {/* Step 5: Buttons - appear last with micro-interactions */}
+      <div 
+        className="flex gap-4 opacity-0 animate-story-fade-in" 
+        style={{ animationDelay: "3.9s" }}
+      >
+        <button 
+          onClick={handleYesClick} 
+          className="px-8 py-4 text-lg font-body font-semibold rounded-full bg-primary text-primary-foreground shadow-md hover:shadow-xl transition-all duration-500 ease-out hover:scale-[1.08] active:scale-95 hover:-translate-y-0.5"
+        >
           YES ❤️
         </button>
-        <button onClick={handleNoClick} disabled={isTransitioning || isShaking} className={`px-8 py-4 text-lg font-body font-medium rounded-full transition-all duration-300 hover:scale-105 active:scale-95 ${isShaking ? "animate-shake" : ""} ${isTransitioning ? "bg-primary text-primary-foreground shadow-lg animate-pulse" : "bg-secondary text-secondary-foreground border border-border hover:bg-muted"}`}>
+        <button 
+          onClick={handleNoClick} 
+          disabled={isTransitioning || isShaking} 
+          className={`px-8 py-4 text-lg font-body font-medium rounded-full transition-all duration-500 ease-out hover:scale-[1.08] active:scale-95 hover:-translate-y-0.5 ${
+            isShaking ? "animate-shake" : ""
+          } ${
+            isTransitioning 
+              ? "bg-primary text-primary-foreground shadow-md animate-pulse" 
+              : "bg-secondary text-secondary-foreground border border-border hover:bg-muted shadow-sm hover:shadow-md"
+          }`}
+        >
           {noButtonText}
         </button>
       </div>
-    </div>;
+    </div>
+  );
 };
 export default ValentineCard;
