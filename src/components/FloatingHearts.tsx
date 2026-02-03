@@ -15,13 +15,13 @@ const FloatingHearts = () => {
 
   useEffect(() => {
     const types: Heart["type"][] = ["heart", "double"]; // Red and green (matcha) hearts
-    const initialHearts: Heart[] = Array.from({ length: 16 }, (_, i) => ({
+    const initialHearts: Heart[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      size: Math.random() * 14 + 10,
-      duration: Math.random() * 12 + 28, // Very slow: 28-40 seconds
-      delay: Math.random() * 15,
-      opacity: Math.random() * 0.2 + 0.15, // More subtle: 0.15-0.35
+      size: Math.random() * 16 + 12,
+      duration: Math.random() * 10 + 22, // Slow: 22-32 seconds
+      delay: Math.random() * 12,
+      opacity: Math.random() * 0.3 + 0.25, // More visible: 0.25-0.55
       type: types[Math.floor(Math.random() * types.length)],
     }));
     setHearts(initialHearts);

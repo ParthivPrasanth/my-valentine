@@ -10,6 +10,7 @@ const ValentineCard = ({
   const [noButtonText, setNoButtonText] = useState("no 💔");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
+  const [shakeCount, setShakeCount] = useState(0);
   const fireConfetti = () => {
     const heart = confetti.shapeFromPath({
       path: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -44,20 +45,28 @@ const ValentineCard = ({
     setAnswered(true);
   };
   const handleNoClick = () => {
-    // Start shake animation
+    const newCount = shakeCount + 1;
+    setShakeCount(newCount);
     setIsShaking(true);
     
-    // After shake completes, change text
+    // Progressive response based on click count
     setTimeout(() => {
       setIsShaking(false);
-      setNoButtonText("Yes 😈😈");
-      setIsTransitioning(true);
       
-      // Wait 1.2 seconds to let the user see the playful change, then trigger the result
-      setTimeout(() => {
-        fireConfetti();
-        setAnswered(true);
-      }, 1200);
+      if (newCount === 1) {
+        setNoButtonText("are you sure? 🥺");
+      } else if (newCount === 2) {
+        setNoButtonText("please? 💕");
+      } else {
+        // Third click - transform to Yes
+        setNoButtonText("Yes 😈💚");
+        setIsTransitioning(true);
+        
+        setTimeout(() => {
+          fireConfetti();
+          setAnswered(true);
+        }, 1000);
+      }
     }, 400);
   };
   if (answered) {
