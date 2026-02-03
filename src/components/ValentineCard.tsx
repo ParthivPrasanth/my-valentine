@@ -54,12 +54,12 @@ const ValentineCard = ({
       setIsShaking(false);
       
       if (newCount === 1) {
-        setNoButtonText("are you sure? 🥺");
+        setNoButtonText("Are you sure? 🥺");
       } else if (newCount === 2) {
-        setNoButtonText("please? 💕");
+        setNoButtonText("Please? 💕");
       } else {
         // Third click - transform to Yes
-        setNoButtonText("Yes 😈💚");
+        setNoButtonText("Yes 😈😈😈");
         setIsTransitioning(true);
         
         setTimeout(() => {
