@@ -135,6 +135,18 @@
   }
 }
 
+/* Story-like slow fade-in animation */
+@keyframes story-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-float-up {
   animation: float-up linear infinite;
 }
@@ -149,4 +161,18 @@
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-story-fade-in {
+  animation: story-fade-in 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* Polaroid-style photo frame */
+.polaroid-frame {
+  padding: 6px;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 
+    0 4px 20px -4px hsl(var(--foreground) / 0.08),
+    0 8px 32px -8px hsl(var(--rose) / 0.12);
 }
