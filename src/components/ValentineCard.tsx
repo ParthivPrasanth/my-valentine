@@ -44,21 +44,20 @@ const ValentineCard = ({
     setAnswered(true);
   };
   const handleNoClick = () => {
-    // Start shake animation
-    setIsShaking(true);
+    // Step 1: Immediately change to "Are you sure?"
+    setNoButtonText("Are you sure? 😳");
+    setIsTransitioning(true);
     
-    // After shake completes, change text
+    // Step 2: After 1 second, change to the longer message
     setTimeout(() => {
-      setIsShaking(false);
-      setNoButtonText("Yes 😈😈");
-      setIsTransitioning(true);
+      setNoButtonText("Doesn't matter, you are stuck with me for life now 😋");
       
-      // Wait 1.2 seconds to let the user see the playful change, then trigger the result
+      // Step 3: After 0.5 seconds, trigger success
       setTimeout(() => {
         fireConfetti();
         setAnswered(true);
-      }, 1200);
-    }, 400);
+      }, 500);
+    }, 1000);
   };
   if (answered) {
     return <div className="flex flex-col items-center justify-center text-center px-6 animate-fade-in-up">
